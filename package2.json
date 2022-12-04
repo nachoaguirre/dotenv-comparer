@@ -1,0 +1,9 @@
+{
+  "name": "dotenv-tools",
+  "version": "1.0.0",
+  "description": "tools for .env files",
+  "main": "index.js",
+  "repository": "https://github.com/nachoaguirre/dotenv-tools.git",
+  "author": "Ignacio Aguirre <ignacio@independiente.cl>",
+  "license": "MIT"
+}

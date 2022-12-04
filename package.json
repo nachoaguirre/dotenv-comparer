@@ -1,0 +1,20 @@
+{
+  "name": "dotenv-tools",
+  "version": "1.0.0",
+  "description": "Tools for .env files",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nachoaguirre/dotenv-tools.git"
+  },
+  "keywords": [],
+  "author": "Ignacio Aguirre",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nachoaguirre/dotenv-tools/issues"
+  },
+  "homepage": "https://github.com/nachoaguirre/dotenv-tools#readme"
+}
