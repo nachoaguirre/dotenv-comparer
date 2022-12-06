@@ -1,1 +1,1 @@
-module.exports = require('./src/DotEnvTools.js');
+module.exports = require('./src/DotEnvComparer.js');

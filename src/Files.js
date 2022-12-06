@@ -6,7 +6,7 @@ class Files {
     this.envDistPath = envDistPath;
   }
 
-  checkFiles() {
+  checkFiles = () => {
     if(this.envPath === '' || this.envDistPath === '') { throw new Error('Set envPath and envDistPath'); }
     if (!fs.existsSync(this.envPath)) { throw '.env path not exists'; }
     if (!fs.existsSync(this.envDistPath)) { throw '.env.dist path not exists'; }
@@ -22,6 +22,13 @@ class Files {
     else { envVars.push(`${key}=${value}`); }
     fs.writeFileSync(this.envPath, envVars.join('\n'));
   };
+
+  writeImportBanner = () => {
+    let d = new Date();
+    let pad = (n) => {return n<10 ? '0'+n : n}
+    let datetimeFile = `${d.getFullYear()}/${pad(d.getMonth()+1)}/${pad(d.getDate())} @ ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+    this.writeEnvValue(`### AUTO IMPORTED ON ${datetimeFile} `, ' ###');
+  }
 
   getEnvValue = (key) => {
       const envVars = fs.readFileSync(this.envPath, 'utf-8').split('\n');

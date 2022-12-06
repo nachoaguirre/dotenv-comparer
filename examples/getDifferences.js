@@ -1,11 +1,14 @@
 // 1. Load the main class. Either from the NPM package or from the source code.
-const DotEnvTools = require('../index.js');
+const DotEnvComparer = require('../index.js');
+// or
+// const DotEnvComparer = require('dotenv-comparer');
+
 
 // 2. Create an instance of the class.
 //   The constructor requires an object with the following properties:
 //   - envPath: The path to the .env file. You can set the path relative at this script, or an absolute path.
 //   - envDistPath: The path to the .env.dist file. You can set the path relative at this script, or an absolute path.
-const dotEnvTools = new DotEnvTools({
+const dotEnvComparer = new DotEnvComparer({
     envPath: __dirname + '/.env',
     envDistPath: __dirname + '/.env.dist',
 });
@@ -16,37 +19,31 @@ const dotEnvTools = new DotEnvTools({
 //   - equals: An object with the variables that are equal in both files.
 //   - differences: An object with the variables that are different in both files.
 //   - news: An object with the variables that are only in the .env.dist file.
-const parseAll = dotEnvTools.parseAll();
+const getAll = dotEnvComparer.getAll();
 // Uncomment the following line to see the result in the console.
-console.log(parseAll);
+//console.log(getAll);
 
 // You can also get the result of each parse separately.
-//console.log(parseAll.equals);
-//console.log(parseAll.differences);
-//console.log(parseAll.news);
+//console.log(getAll.equals);
+//console.log(getAll.differences);
+//console.log(getAll.news);
 
 
 // 4. Get the parse only for new variables between the .env and .env.dist files.
-const news = dotEnvTools.parseNews();
+const news = dotEnvComparer.getNews();
 // Uncomment the following line to see the result in the console.
-//console.log(news);
+//console.log('New values from .env.dist:', news);
+
 
 // 5. Get the parse only for different variables between the .env and .env.dist files.
-const differences = dotEnvTools.parseDifferences();
+const differences = dotEnvComparer.getDifferences();
 // Uncomment the following line to see the result in the console.
-//console.log(differences);
+//console.log('Different values:', differences);
+
 
 // 6. Get the parse only for equal variables between the .env and .env.dist files.
-const equals = dotEnvTools.parseEquals();
-// Uncomment the following line to see the result in the console.
-//console.log(equals);
-
-
-// 7. Import the new variables from the .env.dist file to the .env file.
-//   The new variables will be added at the end of the .env file.
-//   The new variables will be added with the following format:
-//   - A comment with the date and time of the import.
-//   - The variable name.
-//   - The variable value.
-//   - A blank line.
-//dotEnvTools.importNewVariables();
+const equalsOnlyKeys = dotEnvComparer.getEquals();
+//const equalsShowValues = dotEnvComparer.getEquals(true);
+// Uncomment the following lines to see the result in the console.
+//console.log('Equal only keys:', equalsOnlyKeys);
+//console.log('Equal showing Valyes:', equalsShowValues);
