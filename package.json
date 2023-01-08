@@ -1,6 +1,6 @@
 {
   "name": "dotenv-comparer",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Tools for .env files",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,12 @@
     "type": "git",
     "url": "git+https://github.com/nachoaguirre/dotenv-comparer.git"
   },
-  "keywords": ["dotenv", "comparer", ".env", ".env.dist"],
+  "keywords": [
+    "dotenv",
+    "comparer",
+    ".env",
+    ".env.dist"
+  ],
   "author": "Ignacio Aguirre",
   "license": "MIT",
   "bugs": {
