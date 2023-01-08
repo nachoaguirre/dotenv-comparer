@@ -1,4 +1,5 @@
-const fs = require('fs');
+//const fs = require('fs');
+const fs = require('fs/promises');
 
 class Compare {
   constructor(envPath, envDistPath) {
@@ -6,9 +7,12 @@ class Compare {
     this.envDistPath = envDistPath;
   }
 
-  parseAndCompareEnvs = () => {
-    let envFile = fs.readFileSync(this.envPath, 'utf-8').split('\n');
-    let envDistFile = fs.readFileSync(this.envDistPath, 'utf-8').split('\n');
+  parseAndCompareEnvs = async () => {
+    let envFile = await fs.readFile(this.envPath, 'utf-8');
+    envFile = envFile.split('\n');
+
+    let envDistFile = await fs.readFile(this.envDistPath, 'utf-8');
+    envDistFile = envDistFile.split('\n');
 
     let envObj = {};
     let envDistObj = {};
@@ -42,7 +46,7 @@ class Compare {
     return { equals: equals, differences: differences, news: news};
   }
 
-  #checkDiff(o1,o2) {
+  #checkDiff = (o1,o2) => {
     const typeObject = function(o){ return typeof o === 'object'; };
     const check = function(o1, o2) {
       const result = {};

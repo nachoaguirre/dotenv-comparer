@@ -19,31 +19,36 @@ const dotEnvComparer = new DotEnvComparer({
 //   - equals: An object with the variables that are equal in both files.
 //   - differences: An object with the variables that are different in both files.
 //   - news: An object with the variables that are only in the .env.dist file.
-const getAll = dotEnvComparer.getAll();
-// Uncomment the following line to see the result in the console.
-//console.log(getAll);
-
-// You can also get the result of each parse separately.
-//console.log(getAll.equals);
-//console.log(getAll.differences);
-//console.log(getAll.news);
+const getAll = dotEnvComparer.getAll().then((res) => {
+    // Uncomment the following line to see the result in the console.
+    console.log(res);
+    // You can also get the result of each parse separately.
+    //console.log(res.equals);
+    //console.log(res.differences);
+    //console.log(res.news);
+});
 
 
 // 4. Get the parse only for new variables between the .env and .env.dist files.
-const news = dotEnvComparer.getNews();
-// Uncomment the following line to see the result in the console.
-//console.log('New values from .env.dist:', news);
+const news = dotEnvComparer.getNews().then((res) => {
+    // Uncomment the following line to see the result in the console.
+    //console.log('New values from .env.dist:', res);
+});
 
 
 // 5. Get the parse only for different variables between the .env and .env.dist files.
-const differences = dotEnvComparer.getDifferences();
-// Uncomment the following line to see the result in the console.
-//console.log('Different values:', differences);
+const differences = dotEnvComparer.getDifferences().then((res) => {
+    // Uncomment the following line to see the result in the console.
+    //console.log('Different values:', res);
+});
 
 
 // 6. Get the parse only for equal variables between the .env and .env.dist files.
-const equalsOnlyKeys = dotEnvComparer.getEquals();
-//const equalsShowValues = dotEnvComparer.getEquals(true);
-// Uncomment the following lines to see the result in the console.
-//console.log('Equal only keys:', equalsOnlyKeys);
-//console.log('Equal showing Valyes:', equalsShowValues);
+const equalsOnlyKeys = dotEnvComparer.getEquals().then((res) => {
+    // Uncomment the following lines to see the result in the console.
+    //console.log('Equal only keys:', res);
+})
+const equalsShowValues = dotEnvComparer.getEquals(true).then((res) => {
+    //console.log('Equal showing Values:', res);
+});
+
